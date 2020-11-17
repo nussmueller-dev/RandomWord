@@ -7,13 +7,21 @@ using Microsoft.Extensions.Logging;
 
 namespace RandomeWord.Controllers {
   [ApiController]
-  [Route("api/word")]
+  [Route("word")]
   public class WordController : ControllerBase {
+    private readonly Logic _logic;
+    public WordController(Logic logic) {
+      _logic = logic;
+    }
 
     [HttpGet]
     public string Get() {
-      WordList wordList = new WordList();
-      return wordList.getRandomeWord();
+      return _logic.GetRandomWord();
+    }
+
+    [HttpGet("noun")]
+    public string GetNoun() {
+      return _logic.GetRandomNoun();
     }
   }
 }

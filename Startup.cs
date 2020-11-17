@@ -29,6 +29,7 @@ namespace RandomeWord {
         .AllowCredentials());
       });
 
+      services.AddSingleton<Logic>();
       services.AddControllers();
     }
 
