@@ -11,12 +11,12 @@
 
     private void LoadWords() {
       var wholeText = Properties.Resources._AllWords_;
-      _words = wholeText.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+      _words = SplitTextFile(wholeText);
     }
 
     private void LoadSentences() {
       var wholeText = Properties.Resources._AllSentences_;
-      _sentences = wholeText.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+      _sentences = SplitTextFile(wholeText);
     }
 
     public string GetRandomSentence() {
@@ -35,6 +35,10 @@
       } while (word[0].ToString() != word[0].ToString().ToUpper());
 
       return word;
+    }
+
+    private IList<string> SplitTextFile(string text) {
+      return text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Replace("\r", "").Replace("\n", "")).ToList();
     }
   }
 }
