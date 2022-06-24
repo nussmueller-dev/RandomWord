@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
+using RandomWord.Logic;
 
 namespace RandomeWord.Controllers {
   [ApiController]
   [Route("word")]
   public class WordController : ControllerBase {
     private readonly Logic _logic;
+
     public WordController(Logic logic) {
       _logic = logic;
     }
 
     [HttpGet]
-    public string Get() {
-      return _logic.GetRandomWord();
+    [Produces("application/json")]
+    public IActionResult Get() {
+      return Ok(_logic.GetRandomWord());
     }
 
     [HttpGet("noun")]
-    public string GetNoun() {
-      return _logic.GetRandomNoun();
+    [Produces("application/json")]
+    public IActionResult GetNoun() {
+      return Ok(_logic.GetRandomNoun());
     }
   }
 }
