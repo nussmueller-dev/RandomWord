@@ -1,6 +1,6 @@
 ﻿namespace RandomWord.Logic {
   public class Logic {
-    private Random _random = new Random();
+    private readonly Random _random = new Random();
     private IList<string> _words = new List<string>();
     private IList<string> _sentences = new List<string>();
 
