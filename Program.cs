@@ -7,7 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<Logic>();
+builder.Services.AddSingleton<Logic>();
 
 var app = builder.Build();
 
