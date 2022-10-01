@@ -12,9 +12,10 @@ steps:
       from_secret: docker-username
     password: 
       from_secret: docker-password
-    repo: randomword
+    repo: 
+      from_secret: docker-repo
     tags: latest
-    dry_run: true
+    dry_run: false
     purge: true
 
 trigger:
