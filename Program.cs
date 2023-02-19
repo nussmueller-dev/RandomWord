@@ -9,6 +9,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<Logic>();
 
+builder.Services.AddCors(options => {
+  options.AddDefaultPolicy(builder => builder
+  .SetIsOriginAllowed(_ => true)
+  .AllowAnyMethod()
+  .AllowAnyHeader()
+  .AllowCredentials());
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -18,6 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+app.UseCors();
 
 app.MapControllers();
 
